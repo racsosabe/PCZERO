@@ -210,7 +210,6 @@ public:
 
     void process_one(std::tuple<my_complex, my_complex, my_real, my_real, my_real, my_real> &val, int id){
         my_complex LD, RU;
-        my_complex ld{-0.875, 0}, ru{1.9375,3.90625};
         my_real V0, V1, V2, V3;
         std::tie(LD, RU, V0, V1, V2, V3) = val;
         my_real zeros = round((V0 + V1 + V2 + V3) / 2 / PI);
@@ -258,21 +257,9 @@ public:
                 }
             }
             if(!exclude_left) {
-            	if(abs(ld - LD) <= EPS and abs(ru - M2) <= EPS) {
-		    	std::cout << "Rectangle " << std::endl;
-		    	std::cout << "LD = " << LD << ". RU = " << RU << std::endl;
-		    	std::cout << "Adds rectangle " << std::endl;
-		    	std::cout << "LD' = " << LD << ". RU' = " << M2 << std::endl;
-            	}
             	S.push(std::make_tuple(LD, M2, FD, FM, V2 - FU, V3));
             }
             if(!exclude_right) {
-            	if(abs(ld - M1) <= EPS and abs(ru - RU) <= EPS) {
-		    	std::cout << "Rectangle " << std::endl;
-		    	std::cout << "LD = " << M1 << ". RU = " << RU << std::endl;
-		    	std::cout << "Adds rectangle " << std::endl;
-		    	std::cout << "LD' = " << M1 << ". RU' = " << RU << std::endl;
-            	}
             	S.push(std::make_tuple(M1, RU, V0 - FD, V1, FU, -FM));
             }
         }
@@ -311,21 +298,9 @@ public:
                 }
             }
             if(!exclude_down) {
-            	if(abs(ld - LD) <= EPS and abs(ru - M1) <= EPS) {
-		    	std::cout << "Rectangle " << std::endl;
-		    	std::cout << "LD = " << LD << ". RU = " << RU << std::endl;
-		    	std::cout << "Adds rectangle " << std::endl;
-		    	std::cout << "LD' = " << LD << ". RU' = " << M1 << std::endl;
-            	}
             	S.push(std::make_tuple(LD, M1, V0, FD, FM, V3 - FU));
             }
             if(!exclude_up) {
-            	if(abs(ld - M2) <= EPS and abs(ru - RU) <= EPS) {
-		    	std::cout << "Rectangle " << std::endl;
-		    	std::cout << "LD = " << LD << ". RU = " << RU << std::endl;
-		    	std::cout << "Adds rectangle " << std::endl;
-		    	std::cout << "LD' = " << M2 << ". RU' = " << RU << std::endl;
-            	}
             	S.push(std::make_tuple(M2, RU, -FM, V1 - FD, V2, FU));
             }
         }
