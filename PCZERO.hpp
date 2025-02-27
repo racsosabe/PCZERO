@@ -1,5 +1,5 @@
 /*
- * File: PCZERO.cpp
+ * File: PCZERO.hpp
  * Author: Oswaldo Velasquez, Manuel Toribio and Victor Galvan
  * Version: 1.0.0
  * Date: October 25, 2024
