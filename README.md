@@ -27,6 +27,12 @@ To use the `PCZERO.hpp`, just include it in your main. The PCZERO class requires
 - `USE_EXCLUSION_TEST` flag: Set to 1 if the exclusion test will be used on rectangles.
 - `thread_limit` value: Number of threads that will be used during the execution.
 
+And the usage of the constructor is:
+
+`pczero<my_complex, my_real, thread_limit, USE_EXCLUSION_TEST> Solver(f, df, M, N);`
+
+Where $f$, $df$, $M$ and $N$ are the implemented functions/classes.
+
 **Note**: Please consider that the given rectangle in the complex plane might be modified if there is any zero on its border, the final rectangle will be printed once the computation starts.
 
 This program writes to the following files. If they already exist, the new information is appended to the end:
@@ -53,6 +59,12 @@ Then, you can execute it with the following command:
 ./main_zeta (lower-left real part) (lower-left imaginary part) (upper-right real part) (upper-right imaginary part)
 ```
 
+The given example uses the function:
+
+![](https://i.imgur.com/Ga8ds7o.png)
+
+However, the value of the iteration limit can be modified while declaring the class instances.
+
 - Exponential polynomial example: It is shown how to include the header of the Exponential polynomial class and usage of PCZERO.
 
 You can compile it (assuming that the headers are correctly imported) with the following command:
@@ -67,7 +79,7 @@ Then, you can execute it with the following command:
 ./main_exponential (lower-left real part) (lower-left imaginary part) (upper-right real part) (upper-right imaginary part)
 ```
 
-This example uses the function:
+The given example uses the function:
 
 ![](https://i.imgur.com/K0sVFaE.png)
 
@@ -84,6 +96,20 @@ Then, you can execute it with the following command:
 ```bash
 ./main_zeta_no_class (lower-left real part) (lower-left imaginary part) (upper-right real part) (upper-right imaginary part) (n)
 ```
+
+An example of the execution is:
+
+```bash
+./main_zeta_no_class -4 0 1.74 100 5
+```
+
+This example uses the function:
+
+![](https://i.imgur.com/Ga8ds7o.png)
+
+Which will produce the 26 zeros inside the given rectangle over $\zeta_{5}$ in `zeros.txt`. The corresponding plot is the following:
+
+![](https://i.imgur.com/khfrUmI.jpeg)
 
 **Note**: For all the examples that use classes, the base function is defined in their own headers.
 
