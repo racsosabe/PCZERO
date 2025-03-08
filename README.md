@@ -18,13 +18,12 @@ To use the `PCZERO.hpp`, just include it in your main. The PCZERO class requires
 
 - `my_complex` class: The class that will be our complex number representation.
 - `my_real` class: The class that will be our real number representation
-- `polynomial` class: The class that will be our function type. This class must have implemented:
-    - `my_complex evaluate(my_complex x)`: Must evaluate the function on the given complex.
-    - `std::string toString()`: Returns a string representation of the function (May be left as returning an empty string).
-    - `polynomial derivative()`: Must return the derivative of the function instance.
-    - `polynomial Mbound()`: Must return the M function (as explained in the article).
-    - `my_real evaluate_as_m(my_complex s1, my_complex s2)`: Evaluate the M value of the given complex numbers.
-    - `=` operator overloaded. 
+- `base_function` typename: The function type that will be our f and df type. This can be:
+    - A normal function that receives a `my_complex x` as an argument and returns a `my_complex`. For example, `my_complex f(my_complex x) { return x * x; }`, or
+    - A class that overloads the operator `()` to receive a `my_complex` and return a `my_complex`. For example, `my_complex operator () (my_complex x) { return x * x; }`. This class must have the `=` operator overloaded as well.
+- `bound_function` typename: The function type that will be our M and N type. This can be either:
+    - A normal function that receives two `my_complex s1, my_complex s2` as arguments and returns a `my_real`. For example, `my_complex M(my_complex s1, my_complex s2) { return abs(s1 * s2); }`, or
+    - A class that overloads the operator `()` to receive two `my_complex` varaibles and return a `my_real`. For example, `my_real operator () (my_complex s1, my_complex s2) { return abs(s1 * s2); }`. This class must have the `=` operator overloaded as well.
 - `USE_EXCLUSION_TEST` flag: Set to 1 if the exclusion test will be used on rectangles.
 - `thread_limit` value: Number of threads that will be used during the execution.
 
@@ -38,9 +37,9 @@ This program writes to the following files. If they already exist, the new infor
 
 ## Examples
 
-You will find two usages of the `PCZERO.hpp` header in the `examples` folder. It contains:
+You will find three usages of the `PCZERO.hpp` header in the `examples` folder. It contains:
 
-- Dirichlet polynomial example (Partial sum of Riemann zeta function): It is shown how to include the header of the Dirichlet polynomial class and usage of PCZERO.
+- Dirichlet polynomial example with class (Partial sum of Riemann zeta function): It is shown how to include the header of the Dirichlet polynomial class and usage of PCZERO.
 
 You can compile it (assuming that the headers are correctly imported) with the following command:
 
@@ -66,6 +65,20 @@ Then, you can execute it with the following command:
 
 ```bash
 ./main_exponential (lower-left real part) (lower-left imaginary part) (upper-right real part) (upper-right imaginary part)
+```
+
+- Dirichlet polynomial example without class (Partial sum of Riemann zeta function): It is shown how to include the header of the f, df, M and N functions and usage of PCZERO.
+
+You can compile it (assuming that the headers are correctly imported) with the following command:
+
+```bash
+g++ main_zeta_no_class.cpp -pthread -o main_zeta_no_class
+```
+
+Then, you can execute it with the following command:
+
+```bash
+./main_zeta_no_class (lower-left real part) (lower-left imaginary part) (upper-right real part) (upper-right imaginary part) (n)
 ```
 
 ## Authors
