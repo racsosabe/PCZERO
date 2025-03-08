@@ -38,7 +38,6 @@ Where $f$, $df$, $M$ and $N$ are the implemented functions/classes.
 This program writes to the following files. If they already exist, the new information is appended to the end:
 
 -   `zeros.txt`: Contains the computed zeros s in the format `Real Imaginary |f(s)|`.
--   `zeros.gp`: Contains the computed zeros as an array of tuples `[s, |f(s)|]` in PARI/GP format.
 -   `log.txt`: Contains the execution time for processing the zeros.
 
 ## Examples

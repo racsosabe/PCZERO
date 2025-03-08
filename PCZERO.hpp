@@ -45,7 +45,6 @@
      const my_real eps3 = pow(my_real(0.1), 20);
  
      std::string outputname;
-     std::string outputnamex;
      std::string benchmarkname;
  
      const std::string red = "\033[0;31m";
@@ -76,7 +75,6 @@
          M_matrix = M;
          N_matrix = N;
          outputname = "zeros.txt";
-         outputnamex = "zeros.gp";
          benchmarkname = "log.txt";	
      }
  
@@ -369,24 +367,16 @@
      void download() {
          int cnt = 0;
          std::ofstream out; // zeros.txt
-         std::ofstream outx; // zeros.gp
          out.open(outputname, std::ios_base::app);
-         outx.open(outputnamex, std::ios_base::app);
          out.precision(std::numeric_limits<typename my_complex::value_type>::digits10);
-         outx.precision(std::numeric_limits<typename my_complex::value_type>::digits10);
-         outx << "zeroes = [";
          while(Answers.size()) {
              my_complex s;
              my_real R;
              std::tie(s, R) = Answers.pop(NIL);
              out << s.real() << " " << s.imag() << " " << R << '\n';
-             if(cnt) outx << ", ";
-             outx << "[" << s.real() << " + " << s.imag() << " * I, " << R << "]";
              cnt = 1;
          }
-         outx << "];\n";
          out.close();
-         outx.close();
      }
  
      template<typename duration_type>
