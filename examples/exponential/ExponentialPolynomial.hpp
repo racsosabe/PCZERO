@@ -90,7 +90,7 @@ public:
     }
 
     // Evalúa P(s) en s ∈ ℂ
-    my_complex evaluate(const my_complex& s) const {
+    my_complex operator () (const my_complex& s) const {
         my_complex result = 0.0;
         for (const auto& term : terms) {
             result += term.evaluate(s);
@@ -132,7 +132,7 @@ public:
     }
 
     // Evalúa la suma personalizada para s1 y s2
-    my_real evaluate_as_m(const my_complex& s1, const my_complex& s2) const {
+    my_real operator () (const my_complex& s1, const my_complex& s2) const {
         my_real result = 0.0;
         for (const auto& term : terms) {
             result += term.evaluate_as_m(s1, s2);

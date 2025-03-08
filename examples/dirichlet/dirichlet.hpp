@@ -44,7 +44,7 @@ public:
         (*this).coeff[pos] = value;
     }
     
-    my_complex evaluate(const my_complex &x) const {
+    my_complex operator () (const my_complex &x) const {
         my_complex ans = 0;
         int le = getLength();
         for(int i = 0; i < le; i++) {
@@ -53,9 +53,9 @@ public:
         return ans;
     }
     
-    my_real evaluate_as_m(const my_complex &s1, const my_complex &s2) const {
+    my_real operator () (const my_complex &s1, const my_complex &s2) const {
     	my_real min_real = std::min(s1.real(), s2.real());
-        return abs(evaluate(min_real));
+        return abs((*this)(min_real));
     }
 
     // Computing the derivative of the above function

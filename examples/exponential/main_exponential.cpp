@@ -33,13 +33,17 @@ int main(int argc, char* argv[]){
         std::cout << " - Evaluation on a complex point" << std::endl;
         std::cout << " - Computing the derivative of the function" << std::endl;
         std::cout << " - Computing the M bound according to the paper" << std::endl;
-        std::cout << " - toString() method" << std::endl << std::endl;
         std::cout << "In addition, you must implement the function \"base_function()\" that returns f" << std::endl;
         return 0;
     }
-    pczero<my_complex, my_real, polynomial, 0, 8> Solver(base_function());
+    polynomial f = base_function();
+    polynomial df = f.derivative();
+    polynomial M = f.Mbound();
+    polynomial N = M;
+    pczero<my_complex, my_real, 8, 0> Solver(f, df, M, N);
     auto start = std::chrono::high_resolution_clock::now();
-    Solver.solve(argc, argv);
+    my_complex LD{atof(argv[1]), atof(argv[2])}, RU{atof(argv[3]), atof(argv[4])};
+    Solver.solve(LD, RU);
     auto stop = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(stop - start);
     Solver.print_final_information(duration);
