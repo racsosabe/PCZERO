@@ -85,6 +85,8 @@ Then, you can execute it with the following command:
 ./main_zeta_no_class (lower-left real part) (lower-left imaginary part) (upper-right real part) (upper-right imaginary part) (n)
 ```
 
+**Note**: For all the examples that use classes, the base function is defined in their own headers.
+
 ## Authors
 
 -   Oswaldo Velasquez
