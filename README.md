@@ -67,6 +67,10 @@ Then, you can execute it with the following command:
 ./main_exponential (lower-left real part) (lower-left imaginary part) (upper-right real part) (upper-right imaginary part)
 ```
 
+This example uses the function:
+
+![](https://i.imgur.com/K0sVFaE.png)
+
 - Dirichlet polynomial example without class (Partial sum of Riemann zeta function): It is shown how to include the header of the f, df, M and N functions and usage of PCZERO.
 
 You can compile it (assuming that the headers are correctly imported) with the following command:
