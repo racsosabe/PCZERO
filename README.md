@@ -62,7 +62,7 @@ Then, you can execute it with the following command:
 
 The given example uses the function:
 
-![](https://i.imgur.com/Ga8ds7o.png)
+$$ \zeta_{5}(s)=1+2^{-s}+3^{-s}+\cdots +5^{-s} $$
 
 However, the value of the iteration limit can be modified while declaring the class instances.
 
@@ -84,7 +84,7 @@ Then, you can execute it with the following command:
 
 The given example uses the function:
 
-![](https://i.imgur.com/K0sVFaE.png)
+$$ f(s)=-1+(-6-5s)e^{-2s} + (-2 + 3s)e^{-2\pi/3s} + 2e^{-5/2s} + se^{-3s} + 3e^{-4s} $$
 
 - Dirichlet polynomial example without class (Partial sum of Riemann zeta function): It is shown how to include the header of the f, df, M and N functions and usage of PCZERO.
 
@@ -102,6 +102,10 @@ Then, you can execute it with the following command:
 ./main_zeta_no_class (lower-left real part) (lower-left imaginary part) (upper-right real part) (upper-right imaginary part) (n)
 ```
 
+And it will compute the zeros of the function:
+
+$$ \zeta_{n}(s)=1+2^{-s}+3^{-s}+\cdots +n^{-s} $$
+
 An example of the execution is:
 
 ```bash
@@ -110,7 +114,7 @@ An example of the execution is:
 
 This example uses the function:
 
-![](https://i.imgur.com/Ga8ds7o.png)
+$$ \zeta_{5}(s)=1+2^{-s}+3^{-s}+\cdots +5^{-s} $$
 
 Which will produce the 26 zeros inside the given rectangle over $\zeta_{5}$ in `zeros.txt`. The corresponding plot is the following:
 
