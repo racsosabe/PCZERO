@@ -64,7 +64,7 @@ The given example uses the function:
 
 $$ \zeta_{5}(s)=1+2^{-s}+3^{-s}+\cdots +5^{-s} $$
 
-However, the value of the iteration limit can be modified while declaring the class instances.
+However, the value of the iteration limit $n$ can be modified while declaring the class instances.
 
 - Exponential polynomial example: It is shown how to include the header of the Exponential polynomial class and usage of PCZERO.
 
