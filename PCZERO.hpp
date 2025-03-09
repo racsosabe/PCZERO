@@ -224,8 +224,10 @@
              my_real FD = 0, FU = 0;
              bool exclude_left = USE_EXCLUSION_TEST ? exclusion_test(LD, M2) : false;
              if(!exclude_left) var_arg(LD, M1, FD);
+             else excluded += 1;
              bool exclude_right = USE_EXCLUSION_TEST ? exclusion_test(M1, RU) : false;
              if(!exclude_right) var_arg(RU, M2, FU);
+             else excluded += 1;
              if(!USE_EXCLUSION_TEST or (!exclude_left and !exclude_right)) {
                  my_real v1 = FD + FM + V2 - FU + V3;
                  my_real v2 = V0 - FD + V1 + FU - FM;
@@ -265,8 +267,10 @@
              my_real FD = 0, FU = 0;
              bool exclude_down = USE_EXCLUSION_TEST ? exclusion_test(LD, M1) : false;
              if(!exclude_down) var_arg(X1, M1, FD);
+             else excluded += 1;
              bool exclude_up = USE_EXCLUSION_TEST ? exclusion_test(M2, RU) : false;
              if(!exclude_up) var_arg(X2, M2, FU);
+             else excluded += 1;
              if(!USE_EXCLUSION_TEST or (!exclude_down and !exclude_up)) {
                  my_real v1 = V0 + FD + FM + V3 - FU;
                  my_real v2 = V1 - FD + V2 + FU - FM;
