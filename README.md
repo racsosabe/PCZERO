@@ -44,6 +44,10 @@ This program writes to the following files. If they already exist, the new infor
 
 You will find three usages of the `PCZERO.hpp` header in the `examples` folder. It contains:
 
+ - Dirichlet polynomial example with class (Partial sum of Riemann zeta function)
+ - Exponential polynomial example with class
+ - Dirichlet polynomial example without class (Partial sum of Riemann zeta function)
+
 ### Dirichlet polynomial example with class (Partial sum of Riemann zeta function)
 
 It is shown how to include the header of the Dirichlet polynomial class and usage of PCZERO.
