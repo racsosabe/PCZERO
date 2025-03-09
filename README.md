@@ -45,8 +45,11 @@ This program writes to the following files. If they already exist, the new infor
 You will find three usages of the `PCZERO.hpp` header in the `examples` folder. It contains:
 
  - Dirichlet polynomial example with class (Partial sum of Riemann zeta function)
- - Exponential polynomial example with class
+ - Exponential polynomial example with class (no exclusion test)
+ - Exponential polynomial example with class (with exclusion test)
  - Dirichlet polynomial example without class (Partial sum of Riemann zeta function)
+
+The Dirichlet polynomial examples do not use exclusion test.
 
 ### Dirichlet polynomial example with class (Partial sum of Riemann zeta function)
 
@@ -72,14 +75,14 @@ $$ \zeta_{5}(s)=1+2^{-s}+3^{-s}+4^{-s}+5^{-s} $$
 
 However, the value of the iteration limit $n$ can be modified while declaring the class instances.
 
-### Exponential polynomial example with class
+### Exponential polynomial example with class (no exclusion test)
 
 It is shown how to include the header of the Exponential polynomial class and usage of PCZERO.
 
 You can compile it (assuming that the headers are correctly imported) with the following command:
 
 ```bash
-g++ main_exponential.cpp -pthread -o main_exponential
+g++ main_exponential_no_exclusion.cpp -pthread -o main_exponential_no_exclusion
 ```
 
 **If you are using Ubuntu 24.04, please add the flag `-march=native` to the compilation command.**
@@ -87,12 +90,36 @@ g++ main_exponential.cpp -pthread -o main_exponential
 Then, you can execute it with the following command:
 
 ```bash
-./main_exponential (lower-left real part) (lower-left imaginary part) (upper-right real part) (upper-right imaginary part)
+./main_exponential_no_exclusion (lower-left real part) (lower-left imaginary part) (upper-right real part) (upper-right imaginary part)
 ```
 
 The given example uses the function:
 
 $$ f(s)=-1+(-6-5s)e^{-2s} + (-2 + 3s)e^{-2\pi/3s} + 2e^{-5/2s} + se^{-3s} + 3e^{-4s} $$
+
+### Exponential polynomial example with class (with exclusion test)
+
+It is shown how to include the header of the Exponential polynomial class and usage of PCZERO.
+
+You can compile it (assuming that the headers are correctly imported) with the following command:
+
+```bash
+g++ main_exponential_with_exclusion.cpp -pthread -o main_exponential_with_exclusion
+```
+
+**If you are using Ubuntu 24.04, please add the flag `-march=native` to the compilation command.**
+
+Then, you can execute it with the following command:
+
+```bash
+./main_exponential_with_exclusion (lower-left real part) (lower-left imaginary part) (upper-right real part) (upper-right imaginary part)
+```
+
+The given example uses the function:
+
+$$ f(s)=-1+(-6-5s)e^{-2s} + (-2 + 3s)e^{-2\pi/3s} + 2e^{-5/2s} + se^{-3s} + 3e^{-4s} $$
+
+Notice that this implementation differs with the previous one just in the declaration of the pczero class `pczero<my_complex, my_real, 8, 1>` instead of `pczero<my_complex, my_real, 8, 0>`.
 
 ### Dirichlet polynomial example without class (Partial sum of Riemann zeta function)
 
