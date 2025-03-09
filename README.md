@@ -119,7 +119,7 @@ The given example uses the function:
 
 $$ f(s)=-1+(-6-5s)e^{-2s} + (-2 + 3s)e^{-2\pi/3s} + 2e^{-5/2s} + se^{-3s} + 3e^{-4s} $$
 
-Notice that this implementation differs with the previous one just in the declaration of the pczero class `pczero<my_complex, my_real, 8, 1>` instead of `pczero<my_complex, my_real, 8, 0>`.
+Notice that this implementation differs from the previous one only in the declaration of the `pczero` class: `pczero<my_complex, my_real, 8, 1>` instead of `pczero<my_complex, my_real, 8, 0>`.
 
 ### Dirichlet polynomial example without class (Partial sum of Riemann zeta function)
 
