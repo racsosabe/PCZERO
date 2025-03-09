@@ -44,7 +44,9 @@ This program writes to the following files. If they already exist, the new infor
 
 You will find three usages of the `PCZERO.hpp` header in the `examples` folder. It contains:
 
-- Dirichlet polynomial example with class (Partial sum of Riemann zeta function): It is shown how to include the header of the Dirichlet polynomial class and usage of PCZERO.
+### Dirichlet polynomial example with class (Partial sum of Riemann zeta function)
+
+It is shown how to include the header of the Dirichlet polynomial class and usage of PCZERO.
 
 You can compile it (assuming that the headers are correctly imported) with the following command:
 
@@ -66,7 +68,9 @@ $$ \zeta_{5}(s)=1+2^{-s}+3^{-s}+4^{-s}+5^{-s} $$
 
 However, the value of the iteration limit $n$ can be modified while declaring the class instances.
 
-- Exponential polynomial example: It is shown how to include the header of the Exponential polynomial class and usage of PCZERO.
+### Exponential polynomial example with class
+
+It is shown how to include the header of the Exponential polynomial class and usage of PCZERO.
 
 You can compile it (assuming that the headers are correctly imported) with the following command:
 
@@ -86,7 +90,9 @@ The given example uses the function:
 
 $$ f(s)=-1+(-6-5s)e^{-2s} + (-2 + 3s)e^{-2\pi/3s} + 2e^{-5/2s} + se^{-3s} + 3e^{-4s} $$
 
-- Dirichlet polynomial example without class (Partial sum of Riemann zeta function): It is shown how to include the header of the f, df, M and N functions and usage of PCZERO.
+### Dirichlet polynomial example without class (Partial sum of Riemann zeta function)
+
+It is shown how to include the header of the f, df, M and N functions and usage of PCZERO.
 
 You can compile it (assuming that the headers are correctly imported) with the following command:
 
