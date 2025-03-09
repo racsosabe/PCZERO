@@ -52,6 +52,8 @@ You can compile it (assuming that the headers are correctly imported) with the f
 g++ main_zeta.cpp -pthread -o main_zeta
 ```
 
+**Note:** If you are using Ubuntu 24.04, please add the flag `-march=native` to the compilation command.
+
 Then, you can execute it with the following command:
 
 ```bash
@@ -72,6 +74,8 @@ You can compile it (assuming that the headers are correctly imported) with the f
 g++ main_exponential.cpp -pthread -o main_exponential
 ```
 
+**Note:** If you are using Ubuntu 24.04, please add the flag `-march=native` to the compilation command.
+
 Then, you can execute it with the following command:
 
 ```bash
@@ -89,6 +93,8 @@ You can compile it (assuming that the headers are correctly imported) with the f
 ```bash
 g++ main_zeta_no_class.cpp -pthread -o main_zeta_no_class
 ```
+
+**Note:** If you are using Ubuntu 24.04, please add the flag `-march=native` to the compilation command.
 
 Then, you can execute it with the following command:
 

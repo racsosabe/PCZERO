@@ -365,7 +365,6 @@
      }
  
      void download() {
-         int cnt = 0;
          std::ofstream out; // zeros.txt
          out.open(outputname, std::ios_base::app);
          out.precision(std::numeric_limits<typename my_complex::value_type>::digits10);
@@ -374,7 +373,6 @@
              my_real R;
              std::tie(s, R) = Answers.pop(NIL);
              out << s.real() << " " << s.imag() << " " << R << '\n';
-             cnt = 1;
          }
          out.close();
      }
