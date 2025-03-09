@@ -62,7 +62,7 @@ Then, you can execute it with the following command:
 
 The given example uses the function:
 
-$$ \zeta_{5}(s)=1+2^{-s}+3^{-s}+\cdots +5^{-s} $$
+$$ \zeta_{5}(s)=1+2^{-s}+3^{-s}+4^{-s}+5^{-s} $$
 
 However, the value of the iteration limit $n$ can be modified while declaring the class instances.
 
@@ -114,7 +114,7 @@ An example of the execution is:
 
 This example uses the function:
 
-$$ \zeta_{5}(s)=1+2^{-s}+3^{-s}+\cdots +5^{-s} $$
+$$ \zeta_{5}(s)=1+2^{-s}+3^{-s}+4^{-s} +5^{-s} $$
 
 Which will produce the 26 zeros inside the given rectangle over $\zeta_{5}$ in `zeros.txt`. The corresponding plot is the following:
 
