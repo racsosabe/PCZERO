@@ -340,7 +340,7 @@
          S.push(std::make_tuple(LD, RU, P1, P2, P3, P4));
          std::cerr << "Initialized" << std::endl;
          std::cerr << "\033[2J\033[1;1H";
-         std::cerr << "Argument variation: " << (P1 + P2 + P3 + P4) / 2 / PI << std::endl;
+         std::cerr << "Number of zeros: " << (P1 + P2 + P3 + P4) / 2 / PI << std::endl;
          std::cerr << "Now we've got " << cnt << "/" << total_zeros << " zeros" << '\n';
          std::cerr << "Number of active threads: " << active_threads << '\n';
          std::cerr << "Excluded rectangles: " << excluded << '\n';
