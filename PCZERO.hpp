@@ -44,6 +44,9 @@ class pczero {
     const my_real eps2 = pow(my_real(0.1), 90);
     const my_real eps3 = pow(my_real(0.1), 20);
 
+    my_real beta;
+    my_real sq_beta;
+
     std::string outputname;
     std::string benchmarkname;
 
@@ -68,7 +71,7 @@ class pczero {
 public:
 
     // Initialization of custom functions
-    pczero(base_function f, base_function df, bound_function M, bound_function N) {
+    pczero(base_function f, base_function df, bound_function M, bound_function N, my_real beta = 0.5) : beta(beta) {
         cnt = successful_newtons = excluded = processed = 0;
         active_threads = thread_limit;
         f_matrix = f; // Must update to the wanted function
@@ -76,7 +79,9 @@ public:
         M_matrix = M;
         N_matrix = N;
         outputname = "zeros.txt";
-        benchmarkname = "log.txt";	
+        benchmarkname = "log.txt";
+        assert(0 < beta and beta < 1);
+        sq_beta = beta * beta;
     }
 
     void print_progress(int cur, int total) {
@@ -133,8 +138,8 @@ public:
             my_real R0 = M(s3, s4) * norm(s4 - s3) / 8;
             my_real minP = get_min(fs3, f(s4));
             while(minP <= R0 + EPS and t > eps2) {
-                t /= 2;
-                R0 /= 4;
+                t *= beta;
+                R0 *= sq_beta;
                 s4 = s3 + t * d;
                 minP = get_min(fs3, f(s4));
             }
@@ -144,7 +149,7 @@ public:
             res += arg(f(s4) / f(s3));
             t0 += t;
             s3 += d * t;
-            t = abs((s2 - s3) / (s2 - s1)) < 2 * t ? abs((s2 - s3) / (s2 - s1)) : 2 * t;
+            t = abs((s2 - s3) / (s2 - s1)) < t / beta ? abs((s2 - s3) / (s2 - s1)) : t / beta;
             if(t > 1 + eps1 - t0) t = 1 + eps1 - t0;
         }
         return true;
@@ -184,7 +189,7 @@ public:
 
     void add_answer(my_complex &s, my_complex &LD, my_complex &RU, int id) {
         Answers.push(std::make_pair(s, certification_ratio(s, LD, RU)), cnt, total_zeros);
-        if(cnt % 10 == 0) {
+        if(cnt % 100 == 0) {
             std::cerr << "\033[2J\033[1;1H";
             std::cerr << "Now we've got " << cnt << "/" << total_zeros << " zeros" << '\n';
             std::cerr << "Number of active threads: " << active_threads << '\n';
@@ -377,7 +382,7 @@ public:
 
     void download() {
         std::ofstream out; // zeros.txt
-        out.open(outputname, std::ios_base::app);
+        out.open(outputname);
         out.precision(std::numeric_limits<typename my_complex::value_type>::digits10);
         while(Answers.size()) {
             my_complex s;
