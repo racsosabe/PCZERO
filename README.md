@@ -26,12 +26,13 @@ To use the `PCZERO.hpp`, just include it in your main. The PCZERO class requires
     - A class that overloads the operator `()` to receive two `my_complex` varaibles and return a `my_real`. For example, `my_real operator () (my_complex s1, my_complex s2) { return abs(s1 * s2); }`. This class must have the `=` operator overloaded as well.
 - `USE_EXCLUSION_TEST` flag: Set to 1 if the exclusion test will be used on rectangles.
 - `thread_limit` value: Number of threads that will be used during the execution.
+- `rho` value: Coefficient for argument variation computation.
 
 And the usage of the constructor is:
 
-`pczero<my_complex, my_real, thread_limit, USE_EXCLUSION_TEST> Solver(f, df, M, N);`
+`pczero<my_complex, my_real, thread_limit, USE_EXCLUSION_TEST> Solver(f, df, M, N, rho);`
 
-Where $f$, $df$, $M$ and $N$ are the implemented functions/classes.
+Where $f$, $df$, $M$ and $N$ are the implemented functions/classes, and $rho$ is a `my_real` value.
 
 **Note**: Please consider that the given rectangle in the complex plane might be modified if there is any zero on its border, the final rectangle will be printed once the computation starts.
 
