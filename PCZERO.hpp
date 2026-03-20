@@ -44,8 +44,8 @@ class pczero {
     const my_real eps2 = pow(my_real(0.1), 90);
     const my_real eps3 = pow(my_real(0.1), 20);
 
-    my_real beta;
-    my_real sq_beta;
+    my_real rho;
+    my_real sq_rho;
 
     std::string outputname;
     std::string benchmarkname;
@@ -71,7 +71,7 @@ class pczero {
 public:
 
     // Initialization of custom functions
-    pczero(base_function f, base_function df, bound_function M, bound_function N, my_real beta = 0.5) : beta(beta) {
+    pczero(base_function f, base_function df, bound_function M, bound_function N, my_real rho = 0.5) : rho(rho) {
         cnt = successful_newtons = excluded = processed = 0;
         active_threads = thread_limit;
         f_matrix = f; // Must update to the wanted function
@@ -80,8 +80,8 @@ public:
         N_matrix = N;
         outputname = "zeros.txt";
         benchmarkname = "log.txt";
-        assert(0 < beta and beta < 1);
-        sq_beta = beta * beta;
+        assert(0 < rho and rho < 1);
+        sq_rho = rho * rho;
     }
 
     void print_progress(int cur, int total) {
@@ -138,8 +138,8 @@ public:
             my_real R0 = M(s3, s4) * norm(s4 - s3) / 8;
             my_real minP = get_min(fs3, f(s4));
             while(minP <= R0 + EPS and t > eps2) {
-                t *= beta;
-                R0 *= sq_beta;
+                t *= rho;
+                R0 *= sq_rho;
                 s4 = s3 + t * d;
                 minP = get_min(fs3, f(s4));
             }
@@ -149,7 +149,7 @@ public:
             res += arg(f(s4) / f(s3));
             t0 += t;
             s3 += d * t;
-            t = abs((s2 - s3) / (s2 - s1)) < t / beta ? abs((s2 - s3) / (s2 - s1)) : t / beta;
+            t = abs((s2 - s3) / (s2 - s1)) < t / rho ? abs((s2 - s3) / (s2 - s1)) : t / beta;
             if(t > 1 + eps1 - t0) t = 1 + eps1 - t0;
         }
         return true;
