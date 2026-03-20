@@ -32,7 +32,7 @@ And the usage of the constructor is:
 
 `pczero<my_complex, my_real, thread_limit, USE_EXCLUSION_TEST> Solver(f, df, M, N, rho);`
 
-Where $f$, $df$, $M$ and $N$ are the implemented functions/classes, and $rho$ is a `my_real` value.
+Where $f$, $df$, $M$ and $N$ are the implemented functions/classes, and $rho$ is a `my_real` value and it is optional (its default value is $\frac{1}{2}$).
 
 **Note**: Please consider that the given rectangle in the complex plane might be modified if there is any zero on its border, the final rectangle will be printed once the computation starts.
 
