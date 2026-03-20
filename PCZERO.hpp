@@ -149,7 +149,7 @@ public:
             res += arg(f(s4) / f(s3));
             t0 += t;
             s3 += d * t;
-            t = abs((s2 - s3) / (s2 - s1)) < t / rho ? abs((s2 - s3) / (s2 - s1)) : t / beta;
+            t = abs((s2 - s3) / (s2 - s1)) < t / rho ? abs((s2 - s3) / (s2 - s1)) : t / rho;
             if(t > 1 + eps1 - t0) t = 1 + eps1 - t0;
         }
         return true;
