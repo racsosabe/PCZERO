@@ -2,7 +2,7 @@
 
 ## Description
 
-This code is an implementation of the algorithm described in the paper "A Reliable and Parallel Algorithm for the Computation of Zeros of Analytic Functions", called PCZERO.
+This code is an implementation of the algorithm described in the paper "An adaptive parallel algorithm for computing zeros of analytic functions", called PCZERO.
 
 ## Requirements
 
